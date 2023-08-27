@@ -1,6 +1,5 @@
 from fastapi import APIRouter, status
 
-from schemas.bands import BandRead
 
 router = APIRouter()
 
