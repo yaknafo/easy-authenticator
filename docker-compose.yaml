@@ -1,5 +1,9 @@
 version: "3.9"
 
+networks:
+  my-net:
+    driver: bridge
+
 services:
   fastapi_service:
     build:
@@ -11,8 +15,11 @@ services:
       - db_postgres
     ports:
       - "9110:9110"
-#    env_file:
-#      - .env
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - DB_HOST=db_postgres
+      - DB_PORT=5432
     volumes:
       - ./:/home/app
     networks:
@@ -28,15 +35,11 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
-    volumes:
-      - db-postgres:/var/lib/postgresql/data
+#    volumes:
+#      - db-postgres:/var/lib/postgresql/data
     networks:
       - my-net
 
-volumes:
-  db-postgres:
-    driver: local
-
-networks:
-  my-net:
-    external: true
+#volumes:
+#  db-postgres:
+#    driver: local
