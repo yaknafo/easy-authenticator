@@ -20,7 +20,7 @@ except OperationalError as e:
 
 # print('Running DB migrations in %r on %r', script_location, dsn)
 alembic_cfg = Config()
-alembic_cfg.set_main_option('script_location', "../alembic")
+alembic_cfg.set_main_option('script_location', "alembic")
 alembic_cfg.set_main_option('sqlalchemy.url', get_db_url())
 command.upgrade(alembic_cfg, 'head')
 

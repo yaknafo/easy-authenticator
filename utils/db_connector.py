@@ -23,6 +23,8 @@ session = Session()
 
 def get_db_url():
     return db_url
+
 def get_session():
-    # Session = sessionmaker(bind=engine)
-    return session
+    Session = sessionmaker(bind=engine)
+    return Session()
+
