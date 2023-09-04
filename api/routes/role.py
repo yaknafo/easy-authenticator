@@ -1,10 +1,5 @@
-from fastapi import APIRouter, status, Depends
-from sqlalchemy.engine import Engine
-from sqlalchemy.orm import Session
-
-from models.role import Role
+from fastapi import APIRouter, status
 from service.role_service import RoleService
-from utils.db_connector import get_session
 
 router = APIRouter()
 
@@ -24,7 +19,7 @@ async def roles():
     name="role"
 )
 async def get_role(role_name: str):
-    return role_name
+    return RoleService().get_role_by_name(role_name)
 
 
 @router.post(
