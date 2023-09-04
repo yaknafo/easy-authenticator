@@ -3,6 +3,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session
 
 from models.role import Role
+from service.role_service import RoleService
 from utils.db_connector import get_session
 
 router = APIRouter()
@@ -15,11 +16,7 @@ router = APIRouter()
     name="roles"
 )
 async def roles():
-    session = get_session()
-    query_result = session.query(Role).all()
-    session.close()
-    # session.query()
-    return query_result
+    return RoleService().get_all_roles();
 
 @router.get(
     "",
