@@ -22,7 +22,7 @@ def upgrade() -> None:
     # Create role table
     op.create_table(
         "role",
-        sa.Column("id", UUID, primary_key=True),
+        sa.Column("id", sa.Integer, primary_key=True, autoincrement=True),
         sa.Column("name", sa.String(50), nullable=False, unique=True),
         sa.Column("token", sa.String(200)),
     )

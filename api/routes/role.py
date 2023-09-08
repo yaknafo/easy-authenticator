@@ -1,4 +1,6 @@
 from fastapi import APIRouter, status
+
+from schema.role import RoleSchema, RoleSchemaInput
 from service.role_service import RoleService
 
 router = APIRouter()
@@ -6,7 +8,7 @@ router = APIRouter()
 
 @router.get(
     "/all",
-#     response_model=list[BandRead],
+    response_model=list[RoleSchema],
     status_code=status.HTTP_200_OK,
     name="roles"
 )
@@ -15,6 +17,7 @@ async def roles():
 
 @router.get(
     "",
+    response_model=RoleSchema,
     status_code=status.HTTP_200_OK,
     name="role"
 )
@@ -24,20 +27,28 @@ async def get_role(role_name: str):
 
 @router.post(
     "",
-    status_code=status.HTTP_200_OK,
+    response_model=RoleSchema,
+    status_code=status.HTTP_201_CREATED,
     name="create_role"
 )
-async def create_role(role_name: str):
-    ## Adding role
-    return role_name
+async def create_role(role: RoleSchemaInput):
+    return RoleService().create_role(role)
 
 
 @router.put(
     "",
+    response_model=RoleSchema,
     status_code=status.HTTP_200_OK,
     name="update_role"
 )
-async def update_role(role_name: str):
-    ## upadate role
-    return role_name
+async def update_role(role: RoleSchemaInput):
+    return RoleService().update_role(role)
 
+
+@router.delete(
+    "",
+    status_code=status.HTTP_204_NO_CONTENT,
+    name="delete_role"
+)
+async def delete_role(role: RoleSchema):
+    return RoleService().delete_role(role)
