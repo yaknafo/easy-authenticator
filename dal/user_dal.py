@@ -1,4 +1,4 @@
-from models.role import User
+from models.models import User
 from utils.db_connector import get_session
 
 

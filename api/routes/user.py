@@ -1,6 +1,5 @@
 from fastapi import APIRouter, status
 
-from schema.role import RoleSchema, RoleSchemaInput
 from schema.user import UserSchema, UserSchemaInput
 from service.user_service import UserService
 
@@ -9,7 +8,7 @@ router = APIRouter()
 
 @router.get(
     "/all",
-    # response_model=list[RoleSchema],
+    response_model=list[UserSchema],
     status_code=status.HTTP_200_OK,
     name="users"
 )

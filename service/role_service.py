@@ -1,5 +1,5 @@
 from dal.role_dal import RoleDal
-from models.role import Role
+from models.models import Role
 from schema.role import RoleSchemaInput
 
 

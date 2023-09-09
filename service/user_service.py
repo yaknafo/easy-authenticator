@@ -1,5 +1,5 @@
 from dal.user_dal import UserDal
-from models.role import User
+from models.models import User
 from schema.user import UserSchemaInput
 import bcrypt
 
