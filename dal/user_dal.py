@@ -1,4 +1,4 @@
-from models.user import User
+from models.role import User
 from utils.db_connector import get_session
 
 
@@ -9,6 +9,14 @@ class UserDal(object):
 
     def get_all_users(self):
         session = get_session()
-        roles = session.query(self.model).all()
+        users = session.query(self.model).all()
         session.close()
-        return roles
+        return users
+
+    def create_role(self, user: User) -> User:
+        session = get_session()
+        session.add(user)
+        session.commit()
+        new_user = session.query(self.model).filter_by(user_name=user.user_name).first()
+        session.close()
+        return new_user

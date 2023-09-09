@@ -1,6 +1,7 @@
 from fastapi import APIRouter, status
 
 from schema.role import RoleSchema, RoleSchemaInput
+from schema.user import UserSchema, UserSchemaInput
 from service.user_service import UserService
 
 router = APIRouter()
@@ -14,3 +15,14 @@ router = APIRouter()
 )
 async def users():
     return UserService().get_all_users()
+
+
+
+@router.post(
+    "",
+    response_model=UserSchema,
+    status_code=status.HTTP_201_CREATED,
+    name="create_user"
+)
+async def create_role(user: UserSchemaInput):
+    return UserService().create_user(user)

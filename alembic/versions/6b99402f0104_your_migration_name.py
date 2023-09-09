@@ -25,7 +25,7 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer, primary_key=True, autoincrement=True),
         sa.Column("user_name", sa.String(50), nullable=False, unique=True),
         sa.Column("password", sa.String(200)),
-        sa.Column("role", sa.Integer, sa.ForeignKey("role.id"))
+        sa.Column("role_id", sa.Integer, sa.ForeignKey("role.id"))
     )
 
 
