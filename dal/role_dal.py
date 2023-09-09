@@ -32,7 +32,6 @@ class RoleDal(object):
 
         # Check if the role with the same identifier (e.g., role name) exists
         existing_role = session.query(self.model).filter_by(name=role.name).first()
-        print(f"bla: {existing_role.name}")
         if existing_role:
             # Update the attributes of the existing role with the new values
             existing_role.token = role.token  # Update other attributes as needed

@@ -26,3 +26,21 @@ async def users():
 )
 async def create_role(user: UserSchemaInput):
     return UserService().create_user(user)
+
+@router.put(
+    "",
+    response_model=UserSchema,
+    status_code=status.HTTP_200_OK,
+    name="update_user"
+)
+async def update_role(user: UserSchemaInput):
+    return UserService().update_user(user)
+
+
+@router.delete(
+    "",
+    status_code=status.HTTP_204_NO_CONTENT,
+    name="delete_user"
+)
+async def delete_role(user: UserSchemaInput):
+    return UserService().delete_user(user)
