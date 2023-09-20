@@ -1,19 +1,16 @@
 from fastapi import APIRouter, status
 
+from schema.auth import AuthSchemaInput
+from service.authentication_service import AuthenticationService
 
 router = APIRouter()
 
-fake_db = [
-    {"name": "Foo Fighters", "song": "My Hero"},
-    {"name": "Metallica", "song": "Hero of the Day"}
-]
 
-
-@router.get(
+@router.post(
     "",
-#     response_model=list[BandRead],
+    response_model=str,
     status_code=status.HTTP_200_OK,
     name="auth"
 )
-async def auth():
-    return "aaa=="
+async def auth(auth_input:AuthSchemaInput):
+    return AuthenticationService().authenticate_user(auth_input)

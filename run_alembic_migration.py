@@ -25,5 +25,3 @@ alembic_cfg.set_main_option('sqlalchemy.url', get_db_url())
 command.upgrade(alembic_cfg, 'head')
 
 print("Alembic migrations have been applied.")
-
-

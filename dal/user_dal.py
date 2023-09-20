@@ -13,7 +13,19 @@ class UserDal(object):
         session.close()
         return users
 
-    def create_role(self, user: User) -> User:
+    def get_user(self, user: User):
+        session = get_session()
+        # Check if the user with the same identifier (e.g., user name) exists
+        existing_user = session.query(self.model).filter_by(user_name=user.user_name).first()
+        if existing_user:
+            session.close()
+            return existing_user
+        else:
+            session.close()
+            # Handle the case where the user doesn't exist (e.g., raise an exception or return an error message)
+            raise Exception("User not found")
+
+    def create_user(self, user: User) -> User:
         session = get_session()
         session.add(user)
         session.commit()
