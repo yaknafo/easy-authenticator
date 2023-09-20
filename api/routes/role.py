@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 
-from schema.role import RoleSchema, RoleSchemaInput
+from schema.role import RoleSchema, RoleSchemaInput, RoleEndpointSchema
 from service.role_service import RoleService
 
 router = APIRouter()
@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.get(
     "/all",
-    response_model=list[RoleSchema],
+    # response_model=list[RoleSchema],
     status_code=status.HTTP_200_OK,
     name="roles"
 )
@@ -52,3 +52,12 @@ async def update_role(role: RoleSchemaInput):
 )
 async def delete_role(role: RoleSchema):
     return RoleService().delete_role(role)
+
+@router.post(
+    "/add_endpoint",
+    response_model=RoleSchema,
+    status_code=status.HTTP_201_CREATED,
+    name="add_endpoint"
+)
+async def add_endpoint_role(role_endpoint: RoleEndpointSchema):
+    return RoleService().add_endpoint_to_role(role_endpoint)

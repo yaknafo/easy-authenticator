@@ -14,6 +14,8 @@ class Role(Base):
     name = Column(String(50), unique=True, nullable=False)
     token = Column(String(200))
 
+    endpoint = relationship("RoleEndpoint")
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -26,11 +28,26 @@ class User(Base):
     # Define the relationship to the Role table
     role = relationship("Role")
 
+
 class Endpoint(Base):
-    """endpoint model representing a role table."""
+    """endpoint model representing a endpoint table."""
 
     __tablename__ = "endpoint"
     api_id = Column(String(200), primary_key=True)
     listen_path = Column(String(255), unique=True, nullable=False)
     target_url = Column(String(255), nullable=False)
     auth_header_name = Column(String(255), nullable=False)
+
+
+class RoleEndpoint(Base):
+    """endpoint model representing a role endpoint table."""
+
+    __tablename__ = "role_endpoint"
+    api_id = Column(String(200),ForeignKey("endpoint.api_id"), primary_key=True)
+    role_id = Column(Integer, ForeignKey('role.id'), primary_key=True)
+
+    role = relationship("Role", overlaps="endpoint")
+    endpoint = relationship("Endpoint")
+
+
+

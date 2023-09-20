@@ -1,4 +1,6 @@
-from models.models import Role
+from sqlalchemy.orm import joinedload
+
+from models.models import Role, RoleEndpoint
 from utils.db_connector import get_session
 
 
@@ -15,7 +17,7 @@ class RoleDal(object):
 
     def get_role_by_name(self, name: str) -> Role:
         session = get_session()
-        role = session.query(self.model).filter(self.model.name == name).first()
+        role = session.query(self.model).filter(self.model.name == name).options(joinedload(Role.endpoint)).first()
         session.close()
         return role
 
@@ -51,7 +53,7 @@ class RoleDal(object):
         session = get_session()
 
         # Query the database to find the role by its ID
-        role = session.query(Role).filter_by(id=role.id, name=role.name ).first()
+        role = session.query(Role).filter_by(id=role.id, name=role.name).first()
 
         if role:
             # Delete the role
@@ -64,4 +66,10 @@ class RoleDal(object):
             session.close()
             # Handle the case
 
-
+    def add_endpoint_to_role(self, role_endpoint: RoleEndpoint):
+        session = get_session()
+        session.add(role_endpoint)
+        session.commit()
+        role_db = session.query(self.model).filter_by(id=role_endpoint.role_id).first()
+        session.close()
+        return role_db

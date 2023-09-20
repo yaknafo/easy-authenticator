@@ -19,7 +19,7 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    # Create role table
+    # Create user table
     op.create_table(
         "user",
         sa.Column("id", sa.Integer, primary_key=True, autoincrement=True),
