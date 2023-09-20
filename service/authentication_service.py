@@ -5,7 +5,7 @@ from service.user_service import UserService
 import secrets
 
 
-class AuthenticationService():
+class AuthenticationService:
 
     def authenticate_user(self, auth_input:AuthSchemaInput):
         user = UserService().auth_user(user_name=auth_input.user_name, password= auth_input.password)
