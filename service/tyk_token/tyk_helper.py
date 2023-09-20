@@ -11,7 +11,7 @@ def create_endpoint(endpoint_name: str, listen_path: str, target_url):
     endpoint_data[cs.TYK_TARGET_URL] = target_url
 
     # Send the POST request
-    response = requests.post(cs.TYK_API_URL, json=endpoint_data, headers=headers)
+    response = requests.post(cs.TYK_API_URL, json=endpoint_data, headers=cs.TYK_API_HEADER)
     if response.ok:
         print("API created successfully.")
         reload_tyk()

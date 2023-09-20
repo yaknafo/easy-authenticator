@@ -24,4 +24,13 @@ class User(Base):
     role_id = Column(Integer, ForeignKey('role.id'))  # Foreign key referencing the Role table
 
     # Define the relationship to the Role table
-    # role = relationship("Role")
+    role = relationship("Role")
+
+class Endpoint(Base):
+    """endpoint model representing a role table."""
+
+    __tablename__ = "endpoint"
+    api_id = Column(String(200), primary_key=True)
+    listen_path = Column(String(255), unique=True, nullable=False)
+    target_url = Column(String(255), nullable=False)
+    auth_header_name = Column(String(255), nullable=False)
