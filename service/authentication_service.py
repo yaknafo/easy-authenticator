@@ -1,6 +1,8 @@
 import bcrypt
+import service.tyk_token.tyk_helper as tyk_helper
 
 from schema.auth import AuthSchemaInput
+from service.role_service import RoleService
 from service.user_service import UserService
 import secrets
 
@@ -12,5 +14,7 @@ class AuthenticationService:
         if user:
             stored_hashed_password_bytes = bytes.fromhex(user.password[2:])
             if bcrypt.checkpw(auth_input.password.encode("utf-8"), stored_hashed_password_bytes):
-                return secrets.token_hex(32)
+                role = RoleService().get_role_by_id(user.role_id)
+                return tyk_helper.create_key([n.api_id for n in role.endpoint])
+                # return "aa"
         raise Exception("user not found")

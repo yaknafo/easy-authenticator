@@ -21,6 +21,13 @@ class RoleDal(object):
         session.close()
         return role
 
+    def get_role_by_id(self, id: int) -> Role:
+        session = get_session()
+        role = session.query(self.model).filter(self.model.id == id).options(joinedload(Role.endpoint)).first()
+        session.close()
+        return role
+
+
     def create_role(self, role: Role) -> Role:
         session = get_session()
         session.add(role)

@@ -16,6 +16,9 @@ class RoleService(object):
         assert name
         return self.dal.get_role_by_name(name)
 
+    def get_role_by_id(self, id: int) -> Role:
+        return self.dal.get_role_by_id(id)
+
     def create_role(self, role_schema: RoleSchemaInput):
         role_db = Role(name=role_schema.name, token=role_schema.token)
         return self.dal.create_role(role_db)

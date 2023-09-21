@@ -23,3 +23,15 @@ async def endpoints():
 )
 async def create_endpoint(endpoint: CreateEndpointSchema):
     return EndpointService().CreateEndpoint(endpoint)
+
+
+@router.delete(
+    "",
+    response_model=str,
+    status_code=status.HTTP_200_OK,
+    name="delete_endpoint"
+)
+async def create_endpoint(api_id: str):
+    EndpointService().delete_endpoint(api_id)
+    return f"{api_id} has been deleted"
+

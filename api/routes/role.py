@@ -54,10 +54,11 @@ async def delete_role(role: RoleSchema):
     return RoleService().delete_role(role)
 
 @router.post(
-    "/add_endpoint",
-    response_model=RoleSchema,
+    "/endpoint",
+    response_model=str,
     status_code=status.HTTP_201_CREATED,
-    name="add_endpoint"
+    name="endpoint"
 )
 async def add_endpoint_role(role_endpoint: RoleEndpointSchema):
-    return RoleService().add_endpoint_to_role(role_endpoint)
+    RoleService().add_endpoint_to_role(role_endpoint)
+    return f"{role_endpoint.api_id} added to role {role_endpoint.role_id}"

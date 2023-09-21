@@ -17,13 +17,13 @@ TYK_ENDPOINT_NAME = "name"
 TYK_API_ID = "api_id"
 TYK_LISTEN_PATH = "listen_path"
 TYK_TARGET_URL = "target_url"
-
+TYK_PROXY = "proxy"
 
 def get_endpoint_template():
     return {
-        TYK_ENDPOINT_SLUG: "system-status",
-        TYK_ENDPOINT_NAME: "system-status",
-        TYK_API_ID: "system-status",
+        TYK_ENDPOINT_SLUG: None,
+        TYK_ENDPOINT_NAME: None,
+        TYK_API_ID: None,
         "org_id": "1",
         "auth": {
             "auth_header_name": "Authorization"
@@ -42,8 +42,8 @@ def get_endpoint_template():
             }
         },
         "proxy": {
-            TYK_LISTEN_PATH: "/api/sport",
-            TYK_TARGET_URL: "https://www.sport5.co.il/",
+            TYK_LISTEN_PATH: None,
+            TYK_TARGET_URL: None,
             "strip_listen_path": True
         },
         "active": True
@@ -52,23 +52,28 @@ def get_endpoint_template():
 
 TYK_API_NAME = "api_name"
 
-ACCESS_RIGHTS_ENTRY = {
-    TYK_API_NAME: "system-status",
-    TYK_API_ID: "system-status",
-    "versions": [
-        "Default"
-    ],
-    "allowed_urls": [],
-    "limit": None,
-    "allowance_scope": ""
-}
+
+def get_access_rights():
+    return {
+        TYK_API_NAME: None,
+        TYK_API_ID: None,
+        "versions": [
+            "Default"
+        ],
+        "allowed_urls": [],
+        "limit": None,
+        "allowance_scope": ""}
+
 
 ACCESS_RIGHTS = "access_rights"
-KEY_CREATE_DATA = {
-    "quota_max": 0,
-    "rate": 2,
-    "per": 5,
-    "org_id": "1",
-    "access_rights": {}
 
-}
+
+def get_key_create_data():
+    return {
+        "quota_max": 0,
+        "rate": 2,
+        "per": 5,
+        "org_id": "1",
+        ACCESS_RIGHTS: None
+
+    }
