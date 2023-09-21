@@ -20,4 +20,5 @@ class EndpointService(object):
         return endpoint_entry
 
     def delete_endpoint(self, api_id:str):
+        tyk_helper.delete_endpoint(api_id)
         self.dal.delete_role_endpoint(api_id)

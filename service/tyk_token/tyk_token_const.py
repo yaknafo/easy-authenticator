@@ -2,6 +2,8 @@ TYK_API_URL = "http://localhost:8080/tyk/apis"
 TYK_APIS = "/apis"
 TYK_KEYS_CREATE_URL = "http://localhost:8080/tyk/keys/create"
 TYK_RELOAD_URL = "http://localhost:8080/tyk/reload/group"
+TYL_DELETE_URL = "http://localhost:8080/tyk/apis/"
+
 
 # AUTHORIZATION
 X_TYK_AUTHORIZATION = "x-tyk-authorization"

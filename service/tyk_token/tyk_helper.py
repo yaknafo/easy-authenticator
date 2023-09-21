@@ -44,3 +44,14 @@ def create_key(api_ids: list[str]):
     if not response.ok:
         response.raise_for_status()
     return response.json().get("key")
+
+
+def delete_endpoint(api_id: str):
+    response = requests.request("DELETE", f"{cs.TYL_DELETE_URL}/{api_id}", headers=cs.TYK_API_HEADER)
+    if response.ok:
+        print(f"API {api_id} deleted successfully.")
+        reload_tyk()
+        print("Reload successfully.")
+        print(response.json())
+    if not response.ok:
+        response.raise_for_status()
