@@ -1,8 +1,15 @@
-TYK_API_URL = "http://localhost:8080/tyk/apis"
+import os
+
+TYK_HOST = os.getenv("tyk_host", "localhost")
+TYK_POST = os.getenv("tyk_port", "8080")
+TYK_URL = f"http://{TYK_HOST}:{TYK_POST}"
+
+
+TYK_API_URL = f"{TYK_URL}/tyk/apis"
 TYK_APIS = "/apis"
-TYK_KEYS_CREATE_URL = "http://localhost:8080/tyk/keys/create"
-TYK_RELOAD_URL = "http://localhost:8080/tyk/reload/group"
-TYL_DELETE_URL = "http://localhost:8080/tyk/apis/"
+TYK_KEYS_CREATE_URL = f"{TYK_URL}/tyk/keys/create"
+TYK_RELOAD_URL = f"{TYK_URL}/tyk/reload/group"
+TYL_DELETE_URL = f"{TYK_URL}/tyk/apis/"
 
 
 # AUTHORIZATION
