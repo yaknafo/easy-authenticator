@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: easy-auth-ingress
+spec:
+  rules:
+    - host: easy-auth.example.com  # Replace with your desired hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: easy-auth-service
+                port:
+                  number: 9110

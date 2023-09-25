@@ -5,6 +5,8 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 COPY . /app
+
+EXPOSE 9110
 #
 RUN pip install -r /app/requirements.txt
 CMD ["./start_app.sh"]

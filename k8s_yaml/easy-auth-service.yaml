@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: easy-auth-service
+spec:
+  selector:
+    app: easy-auth
+  ports:
+    - protocol: TCP
+      port: 9110  # Port your application is listening on
+      targetPort: 9110
+  type: NodePort
