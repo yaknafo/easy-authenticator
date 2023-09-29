@@ -11,3 +11,10 @@ uvicorn main:app --host 127.0.0.1 --port 9110
 ```
 docker compose up --build
 ```
+
+
+## Kubectl
+#### To access the gateway run
+```
+kubectl port-forward svc/tyk-svc 8080:8080
+```
