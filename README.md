@@ -17,4 +17,6 @@ docker compose up --build
 #### To access the gateway run
 ```
 kubectl port-forward svc/tyk-svc 8080:8080
+
+minikube service easy-auth --url
 ```

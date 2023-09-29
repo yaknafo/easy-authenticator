@@ -1,6 +1,6 @@
 import requests
 import service.tyk_token.tyk_token_const as cs
-import json
+
 
 
 def create_endpoint(endpoint_name: str, listen_path: str, target_url):

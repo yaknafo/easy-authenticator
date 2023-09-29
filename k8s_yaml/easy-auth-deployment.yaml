@@ -33,5 +33,10 @@ spec:
               secretKeyRef:
                 name: easy-auth-secret
                 key: DB_PORT
+          - name: tyk_port
+            value: "8080"
+          - name: tyk_host
+            value: tyk-svc
+
           ports:
             - containerPort: 9110
