@@ -61,6 +61,7 @@ metadata:
   labels:
     app: tyk-gtw
 spec:
+  type: NodePort  # Change the service type to NodePort
   ports:
     - port: 8080
       targetPort: 8080
