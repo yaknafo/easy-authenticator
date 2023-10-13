@@ -37,7 +37,11 @@ Before starting:
  kubectl apply -f .\postgres-service.yaml
  kubectl apply -f .\easy-auth-deployment.yaml
  kubectl apply -f .\easy-auth-service.yaml
+ kubectl apply -f .\redis-deployment.yaml
+ kubectl apply -f .\redis-service.yaml
  kubectl apply -f .\ingress.yaml
+ kubectl apply -f .\ingress-nginx-auth-url.yaml
+
 ```
 
 ##### check that pods are up and running
@@ -54,5 +58,9 @@ kubectl get pods
 
 ingress logs:
 ```commandline
+apt update && apt-get -y install dnsutils
+nslookup <service_name>
+
+
 kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
 ```
