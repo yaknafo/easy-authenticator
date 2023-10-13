@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - foo'
 spec:
   rules:
-  - host: local-easy-auth.com
+  - host: admin-local-easy-auth.com
     http:
       paths:
       - path: /

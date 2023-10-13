@@ -49,3 +49,10 @@ kubectl get pods
 ```commandline
  minikube tunnel
 ```
+
+###### useful commands:
+
+ingress logs:
+```commandline
+kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+```

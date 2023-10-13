@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: http://easy-auth-service.default.svc.cluster.local:9110/
+    namespace: default
+  name: ingress-with-auth
+spec:
+  rules:
+  - host: local-easy-auth.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: easy-auth-service
+            port:
+              number: 9110
+  ingressClassName: nginx
