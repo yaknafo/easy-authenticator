@@ -54,13 +54,22 @@ kubectl get pods
  minikube tunnel
 ```
 
+#### Domains:
+```text
+http://login-local-easy-auth.com/api/auth/ --> for Login No Auth
+http://local-easy-auth.com/api/(.*) --> Bearer Token
+http://admin-easy-auth.com/api/(.*) --> Basic Auto
+```
+
 ###### useful commands:
 
 ingress logs:
 ```commandline
+kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+```
+
+Find internal DNS (inside k8s cluster):
+```commandline
 apt update && apt-get -y install dnsutils
 nslookup <service_name>
-
-
-kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
 ```

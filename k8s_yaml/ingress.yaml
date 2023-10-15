@@ -4,13 +4,13 @@ metadata:
   name: easy-auth-ingress
   annotations:
 #    kubernetes.io/ingress.class:tyk
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /api/auth
 spec:
   rules:
-    - host: local-easy-auth.com
+    - host: login-local-easy-auth.com
       http:
         paths:
-          - path: /
+          - path: /api/auth
             pathType: Prefix
             backend:
               service:
