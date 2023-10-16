@@ -37,11 +37,10 @@ Before starting:
  kubectl apply -f .\postgres-service.yaml
  kubectl apply -f .\easy-auth-deployment.yaml
  kubectl apply -f .\easy-auth-service.yaml
- kubectl apply -f .\redis-deployment.yaml
- kubectl apply -f .\redis-service.yaml
+ kubectl apply -f .\redis-easy-auth.yaml
  kubectl apply -f .\ingress.yaml
+  kubectl apply -f .\ingress-nginx.yaml
  kubectl apply -f .\ingress-nginx-auth-url.yaml
-
 ```
 
 ##### check that pods are up and running
