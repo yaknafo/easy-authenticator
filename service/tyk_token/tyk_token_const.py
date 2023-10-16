@@ -4,7 +4,9 @@ TYK_HOST = os.getenv("tyk_host", "localhost")
 TYK_POST = os.getenv("tyk_port", "8080")
 TYK_URL = f"http://{TYK_HOST}:{TYK_POST}"
 
-
+TARGET_AUTH_HOST = os.getenv("TARGET_AUTH_HOST", "localhost")
+TARGET_AUTH_PORT = os.getenv("TARGET_AUTH_PORT", "9110")
+TARGET_AUTH_URL = f"http://{TARGET_AUTH_HOST}:{TARGET_AUTH_PORT}"
 TYK_API_URL = f"{TYK_URL}/tyk/apis"
 TYK_APIS = "/apis"
 TYK_KEYS_CREATE_URL = f"{TYK_URL}/tyk/keys/create"

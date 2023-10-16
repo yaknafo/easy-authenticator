@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: easy-auth
-          image: yaknafo/easy-auth:1.02
+          image: yaknafo/easy-auth:1.03
           env:
           - name: POSTGRES_USER
             valueFrom:

@@ -20,6 +20,8 @@ services:
       - POSTGRES_PASSWORD=postgres
       - DB_HOST=db_postgres
       - DB_PORT=5432
+      - TARGET_AUTH_HOST=localhost
+      - TARGET_AUTH_PORT=9110
     volumes:
       - ./:/home/app
     networks:
@@ -37,6 +39,15 @@ services:
       - "5432:5432"
 #    volumes:
 #      - db-postgres:/var/lib/postgresql/data
+    networks:
+      - my-net
+
+  redis_service: # Define the Redis service
+    image: redis:latest
+    hostname: redis_service
+    container_name: redis_service
+    ports:
+      - "6379:6379"  # Expose Redis default port
     networks:
       - my-net
 
