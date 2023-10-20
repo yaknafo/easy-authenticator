@@ -1,0 +1,22 @@
+# FILE: bandit.yaml
+exclude_dirs: [ '.git', '.venv', 'venv', 'env','.github' ]
+tests: ['B101', 'B301', 'B303', 'B403','B105','B106','B107','B108', 'B113', 'B608', 'B609']
+skips: [ ]
+
+assert_used:
+  skips: ['*_test.py', '*test_*.py']
+
+
+# Docs for Rules, please check https://bandit.readthedocs.io/en/latest/plugins/ for more plugins
+#      - B101  # Assert should not be used in production code
+#      - B301  # Pickle module may be used to deserialize untrusted data
+#      - B303  # Use of insecure MD2, MD4, and MD5 hash functions
+#      - B403  # Blacklist subprocess with shell=True
+#      - B105  # hardcoded_password_string
+#      - B106 # hardcoded_password_funcarg
+#      - B107 # hardcoded_password_default
+#      - B108 # hardcoded_tmp_directory
+#      - B109 # password_config_option_not_marked_secret
+#      - B113 # request_without_timeout
+#      - B608 # hardcoded_sql_expressions
+#      - B609 # linux_commands_wildcard_injection
