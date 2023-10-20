@@ -11,7 +11,7 @@ data:
       "app_path": "/opt/tyk-gateway/apps/",
       "storage": {
         "type": "redis",
-        "host": "tyk-redis",
+        "host": "redis-service",
         "port": 6379,
         "username": "",
         "password": "",

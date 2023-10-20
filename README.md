@@ -1,5 +1,8 @@
 # easy-authenticator
-easy out-of-the-box authentication for prototype project
+easy out-of-the-box authentication for kubernetes prototype project
+
+### HL Diagram
+
 
 ## Run locally
 ```
