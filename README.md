@@ -33,6 +33,7 @@ Before starting:
 ```
 
 ```commandline
+ kubectl create secret generic basic-auth --from-file=auth
  kubectl apply -f .\easy-auth-config-map.yaml
  kubectl apply -f .\easy-auth-secrets.yaml
  kubectl apply -f .\postgres-secret.yaml
