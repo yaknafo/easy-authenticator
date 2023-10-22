@@ -64,6 +64,14 @@ http://local-easy-auth.com/api/(.*) --> Bearer Token
 http://admin-easy-auth.com/api/(.*) --> Basic Auto
 ```
 
+#### Initial basic auth:
+```text
+Username: foo
+Password: bla
+
+change file auth to change the Initial credentials
+```
+
 ###### useful commands:
 
 ingress logs:
