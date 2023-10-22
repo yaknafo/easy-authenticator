@@ -9,12 +9,12 @@ import secrets
 import string
 
 TOKEN_LENGTH = 32
-
+API_SECRET = "bla_secret++=="
 
 def _generate_random_token():
     # Define the characters to use for generating the token
     characters = string.ascii_letters + string.digits
-
+    print(API_SECRET)
     # Generate a random token with the specified length
     token = ''.join(secrets.choice(characters) for _ in range(TOKEN_LENGTH))
     return token
