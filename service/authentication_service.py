@@ -9,7 +9,6 @@ import secrets
 import string
 
 TOKEN_LENGTH = 32
-
 def _generate_random_token():
     # Define the characters to use for generating the token
     characters = string.ascii_letters + string.digits
