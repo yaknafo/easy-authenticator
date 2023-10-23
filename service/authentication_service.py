@@ -1,3 +1,5 @@
+import os
+
 import bcrypt
 import service.tyk_token.tyk_helper as tyk_helper
 
@@ -9,6 +11,7 @@ import secrets
 import string
 
 TOKEN_LENGTH = 32
+TYK_AUTH = os.getenv('TYK_AUTH', False)
 def _generate_random_token():
     # Define the characters to use for generating the token
     characters = string.ascii_letters + string.digits
@@ -27,11 +30,13 @@ class AuthenticationService:
         if user:
             stored_hashed_password_bytes = bytes.fromhex(user.password[2:])
             if bcrypt.checkpw(auth_input.password.encode("utf-8"), stored_hashed_password_bytes):
-                role = RoleService().get_role_by_id(user.role_id)
-                auth_token = _generate_random_token()
-                self.redis_client.set_token(auth_token, user.id)
-                return auth_token
-                # return tyk_helper.create_key([n.api_id for n in role.endpoint])
+                if TYK_AUTH:
+                    role = RoleService().get_role_by_id(user.role_id)
+                    return tyk_helper.create_key([n.api_id for n in role.endpoint])
+                else:
+                    auth_token = _generate_random_token()
+                    self.redis_client.set_token(auth_token, user.id)
+                    return auth_token
         raise Exception("user not found")
 
     def check_token(self, auth_token: str):

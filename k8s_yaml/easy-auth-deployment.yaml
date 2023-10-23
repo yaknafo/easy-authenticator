@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: easy-auth
-          image: yaknafo/easy-auth:1.04
+          image: yaknafo/easy-auth:1.05
           env:
           - name: POSTGRES_USER
             valueFrom:
@@ -41,6 +41,8 @@ spec:
             value: redis-service # Replace with the actual service name for your Redis instance
           - name: REDIS_PORT  # Add the Redis port environment variable
             value: "6379" # Use the correct port if your Redis is running on a different port
+          - name: TYK_AUTH
+            value: "True"
 
           ports:
             - containerPort: 9110
