@@ -36,7 +36,7 @@ spec:
           - name: tyk_port
             value: "8080"
           - name: tyk_host
-            value: tyk-
+            value: gateway-svc-tyk-oss-tyk-gateway.tyk-oss.svc.cluster.local
           - name: REDIS_HOST  # Add the Redis host environment variable
             value: redis-service # Replace with the actual service name for your Redis instance
           - name: REDIS_PORT  # Add the Redis port environment variable

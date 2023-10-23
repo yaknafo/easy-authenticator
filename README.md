@@ -47,6 +47,22 @@ Before starting:
  kubectl apply -f .\ingress-nginx-auth-url.yaml
 ```
 
+#### Run Tyk-oss
+```commandline
+export NAMESPACE:"tyk-oss"
+export APISecret:foo
+
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --set image.tag=6.2.13
+helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace --install   --set global.secrets.APISecret="$APISecret" --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc.cluster.local:6379}" --set global.redis.passSecret.name=tyk-redis --set global.redis.passSecret.keyName=redis-password
+ 
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+helm show values tyk-helm/tyk-oss > values-oss.yaml 
+
+helm install tyk-oss tyk-helm/tyk-oss -n tyk --create-namespace -f values-oss.yaml
+
+```
+
 ##### check that pods are up and running
 ```commandline
 kubectl get pods
@@ -70,6 +86,11 @@ Username: foo
 Password: bla
 
 change file auth to change the Initial credentials
+```
+
+#### tyk details:
+```text
+ tyk url: gateway-svc-tyk-oss-tyk-gateway.tyk-oss.svc.cluster.local
 ```
 
 ###### useful commands:
