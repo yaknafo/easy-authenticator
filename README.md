@@ -42,6 +42,7 @@ Before starting:
  kubectl apply -f .\easy-auth-deployment.yaml
  kubectl apply -f .\easy-auth-service.yaml
  kubectl apply -f .\redis-easy-auth.yaml
+ kubectl apply -f .\bridge_service.yaml
  kubectl apply -f .\ingress.yaml
   kubectl apply -f .\ingress-nginx.yaml
  kubectl apply -f .\ingress-nginx-auth-url.yaml
