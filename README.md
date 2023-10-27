@@ -160,7 +160,7 @@ curl --location 'http://admin-local-easy-auth.com/api/role/endpoint' \
 }'
 ```
 
-##### 4. Login and save the token from the response (Auth - basic auth)
+##### 4. Login and save the token from the response (Auth - no auth)
 ```commandline
 curl --location 'http://login-local-easy-auth.com/api/auth/' \
 --header 'Content-Type: application/json' \
