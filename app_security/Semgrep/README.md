@@ -7,7 +7,7 @@ Semgrep analyzes code locally on your computer or in your build environment:
 ### commands
 this commands is for usingSemgrep throw docker
 ```commandline
- docker run --rm -v "${PWD}:/src\" returntocorp/semgrep semgrep scan
+docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep scan 
 ```
 
 output
