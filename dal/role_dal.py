@@ -27,7 +27,6 @@ class RoleDal(object):
         session.close()
         return role
 
-
     def create_role(self, role: Role) -> Role:
         session = get_session()
         session.add(role)

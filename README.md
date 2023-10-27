@@ -166,7 +166,7 @@ curl --location 'http://login-local-easy-auth.com/api/auth/' \
 }'
 ```
 
-##### 5. Tyk your endpoint :) (Auth - Bearer token)
+##### 5. Try your endpoint :) (Auth - Bearer token)
 ```commandline
 curl --location --request GET 'http://local-easy-auth.com/api/<YOUR_ENDPOINT_PATH>' 
 --header 'Content-Type: application/json' \

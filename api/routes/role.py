@@ -27,7 +27,6 @@ async def get_role(role_name: str):
 
 @router.post(
     "",
-    response_model=RoleSchema,
     status_code=status.HTTP_201_CREATED,
     name="create_role"
 )
