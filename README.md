@@ -105,3 +105,70 @@ Find internal DNS (inside k8s cluster):
 apt update && apt-get -y install dnsutils
 nslookup <service_name>
 ```
+
+### Start Guide
+the starting flow:
+Use admin-local-easy-auth.local domain:
+
+##### 1. Create Role  (Auth - basic auth)
+```commandline
+curl --location 'http://admin-local-easy-auth.com/api/user' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic Zm9vOmJsYQ==' \
+--data '{
+    "name" : "admin",
+    "token": "admin"
+}'
+```
+
+##### 2. Create User (Auth - basic auth)
+```commandline
+curl --location 'http://admin-local-easy-auth.com/api/user' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic Zm9vOmJsYQ==' \
+--data '{
+    "user_name" : "joe",
+    "password": "joe_pass",
+    "role_id":1
+}'
+```
+
+##### 3. Create Endpoint (Auth - basic auth)
+```commandline
+curl --location 'http://admin-local-easy-auth.com/api/endpoint' 
+--header 'Content-Type: application/json' 
+--header 'Authorization: Basic Zm9vOmJsYQ==' \
+--data '{
+    "endpoint_name" : "endpoint_name_example",
+    "listen_path": <PATH>",
+    "target_url":"http://<INTERNAL_CLUSTER_PATH>/api/<PATH>"
+}'
+```
+
+##### 4. Assign Endpoint to a Role (Auth - basic auth)
+```commandline
+curl --location 'http://admin-local-easy-auth.com/api/role/endpoint' \
+--header 'Content-Type: application/json' \
+--header Authorization: Basic Zm9vOmJsYQ==
+--data '{
+    "api_id" : "endpoint_name_example",
+    "role_id": 1
+}'
+```
+
+##### 4. Login and save the token from the response (Auth - basic auth)
+```commandline
+curl --location 'http://login-local-easy-auth.com/api/auth/' \
+--header 'Content-Type: application/json' \
+--data '{
+    "user_name" : "joe",
+    "password": "joe_pass"
+}'
+```
+
+##### 5. Tyk your endpoint :) (Auth - Bearer token)
+```commandline
+curl --location --request GET 'http://local-easy-auth.com/api/<YOUR_ENDPOINT_PATH>' 
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <TOKEN>' \
+```
