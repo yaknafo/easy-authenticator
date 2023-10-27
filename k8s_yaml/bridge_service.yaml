@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-svc-tyk-oss-tyk-gateway
+spec:
+  type: ExternalName
+  externalName: gateway-svc-tyk-oss-tyk-gateway.tyk-oss.svc.cluster.local
+  ports:
+    - protocol: TCP
+      port: 8080  # Port your application is listening on
+      targetPort: 8080

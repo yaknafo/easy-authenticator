@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/auth-url: http://easy-auth-service.default.svc.cluster.local:9110/api/auth/check
-    namespace: default
   name: ingress-with-auth
 spec:
   rules:
@@ -14,7 +12,8 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: easy-auth-service
+            name:  gateway-svc-tyk-oss-tyk-gateway
             port:
-              number: 9110
+              number: 8080
+#            namespace: tyk-oss
   ingressClassName: nginx
