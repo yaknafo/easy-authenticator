@@ -1,5 +1,8 @@
 # easy-authenticator
-easy out-of-the-box authentication for kubernetes prototype project
+Easy-Authenticator: Streamlined Kubernetes RBAC with Endpoint Control, 
+Rate-Limiting, and More. Seamlessly integrates with Nginx Ingress and 
+Tyk-OSS for quick and hassle-free role-based access control, endpoint management, 
+rate-limiting, and fine-grained privileges in your Kubernetes infrastructure.
 
 ### HL Diagram
 
