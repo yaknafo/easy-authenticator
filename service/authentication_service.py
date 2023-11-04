@@ -11,7 +11,7 @@ import secrets
 import string
 
 TOKEN_LENGTH = 32
-TYK_AUTH = os.getenv('TYK_AUTH', False)
+TYK_AUTH = os.getenv('TYK_AUTH', True)
 
 
 def _generate_random_token():
