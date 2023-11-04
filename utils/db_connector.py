@@ -1,13 +1,12 @@
 import os
 
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 
-db_username = os.getenv("POSTGRES_USER",  "postgres")
-db_password = os.getenv("POSTGRES_PASSWORD",  "postgres")
-db_host = os.getenv("DB_HOST",  "localhost")   # usually "localhost" if it's running locally
-db_port = os.getenv("DB_PORT",  "5432")  # default PostgreSQL port is 5432
+db_username = os.getenv("POSTGRES_USER", "postgres")
+db_password = os.getenv("POSTGRES_PASSWORD", "postgres")
+db_host = os.getenv("DB_HOST", "localhost")  # usually "localhost" if it's running locally
+db_port = os.getenv("DB_PORT", "5432")  # default PostgreSQL port is 5432
 db_name = "token_db"
 
 # Create the database connection string
@@ -21,10 +20,11 @@ engine = create_engine(db_url)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+
 def get_db_url():
     return db_url
+
 
 def get_session():
     Session = sessionmaker(bind=engine)
     return Session()
-

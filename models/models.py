@@ -43,7 +43,7 @@ class RoleEndpoint(Base):
     """endpoint model representing a role endpoint table."""
 
     __tablename__ = "role_endpoint"
-    api_id = Column(String(200),ForeignKey("endpoint.api_id"), primary_key=True)
+    api_id = Column(String(200), ForeignKey("endpoint.api_id"), primary_key=True)
     role_id = Column(Integer, ForeignKey('role.id'), primary_key=True)
 
     role = relationship("Role", overlaps="endpoint")

@@ -4,7 +4,6 @@ from core.config import settings
 
 from api.router import router
 
-
 app = FastAPI(
     title=settings.title,
     version=settings.version,

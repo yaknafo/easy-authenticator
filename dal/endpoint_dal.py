@@ -23,12 +23,12 @@ class EndpointDal(object):
 
     def delete_role_endpoint(self, api_id: str) -> None:
         session = get_session()
-        endpoint_to_delete = session.query(self.model).filter_by(api_id = api_id).first()
+        endpoint_to_delete = session.query(self.model).filter_by(api_id=api_id).first()
 
         if endpoint_to_delete:
 
             # Query the database to find the role by its ID
-            role_endpoints_to_delete = session.query(RoleEndpoint).filter_by(api_id = api_id)
+            role_endpoints_to_delete = session.query(RoleEndpoint).filter_by(api_id=api_id)
             for re in role_endpoints_to_delete:
                 session.delete(re)
             session.delete(endpoint_to_delete)

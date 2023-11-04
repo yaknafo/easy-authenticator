@@ -2,7 +2,6 @@ import requests
 import service.tyk_token.tyk_token_const as cs
 
 
-
 def create_endpoint(endpoint_name: str, listen_path: str, target_url):
     endpoint_data = cs.get_endpoint_template()
     endpoint_data[cs.TYK_ENDPOINT_NAME] = endpoint_name

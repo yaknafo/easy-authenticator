@@ -15,7 +15,6 @@ class RedisClient(object):
         self.client = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
 
     def get_key(self, key: str):
-        res = self.client.keys()
         return self.client.get(key)
 
     def set_token(self, token: str, user_id: str):

@@ -13,7 +13,6 @@ TYK_KEYS_CREATE_URL = f"{TYK_URL}/tyk/keys/create"
 TYK_RELOAD_URL = f"{TYK_URL}/tyk/reload/group"
 TYL_DELETE_URL = f"{TYK_URL}/tyk/apis/"
 
-
 # AUTHORIZATION
 X_TYK_AUTHORIZATION = "x-tyk-authorization"
 # Define the headers
@@ -29,6 +28,7 @@ TYK_API_ID = "api_id"
 TYK_LISTEN_PATH = "listen_path"
 TYK_TARGET_URL = "target_url"
 TYK_PROXY = "proxy"
+
 
 def get_endpoint_template():
     return {

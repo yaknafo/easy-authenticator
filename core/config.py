@@ -3,11 +3,10 @@ import os
 from pydantic import BaseConfig
 
 
-
 class GlobalConfig(BaseConfig):
     title: str = "test"
     version: str = "1.0.0"
-    description: str = "bla"
+    description: str = "easy-authenticator"
     # openapi_prefix: str = "api"
     docs_url: str = "/docs"
     redoc_url: str = "/redoc"
