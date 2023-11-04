@@ -16,7 +16,6 @@ async def users():
     return UserService().get_all_users()
 
 
-
 @router.post(
     "",
     response_model=UserSchema,
@@ -25,6 +24,7 @@ async def users():
 )
 async def create_role(user: UserSchemaInput):
     return UserService().create_user(user)
+
 
 @router.put(
     "",

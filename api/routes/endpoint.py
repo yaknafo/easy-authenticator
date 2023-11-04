@@ -5,6 +5,7 @@ from service.endpoint_service import EndpointService
 
 router = APIRouter()
 
+
 @router.get(
     "/all",
     response_model=list[EndpointSchema],
@@ -12,7 +13,7 @@ router = APIRouter()
     name="endpoints"
 )
 async def endpoints():
-    return EndpointService().get_endpoints();
+    return EndpointService().get_endpoints()
 
 
 @router.post(
@@ -34,4 +35,3 @@ async def create_endpoint(endpoint: CreateEndpointSchema):
 async def create_endpoint(api_id: str):
     EndpointService().delete_endpoint(api_id)
     return f"{api_id} has been deleted"
-

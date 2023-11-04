@@ -13,7 +13,7 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,
     name="auth"
 )
-async def auth(auth_input:AuthSchemaInput):
+async def auth(auth_input: AuthSchemaInput):
     return AuthenticationService().authenticate_user(auth_input)
 
 
