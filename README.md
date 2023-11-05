@@ -4,28 +4,32 @@ Rate-Limiting, and More. Seamlessly integrates with Nginx Ingress and
 Tyk-OSS for quick and hassle-free role-based access control, endpoint management, 
 rate-limiting, and fine-grained privileges in your Kubernetes infrastructure.
 
-### HL Diagram
+## Built Using 🧩
+ * [tyk](https://github.com/TykTechnologies/tyk)
+ * [Nginx-ingress-controller](https://docs.nginx.com/nginx-ingress-controller/)
+### Installations are available:
+* locally
+* Docker
+* K8S (YAML)
+* Helm (WIP)
+* Cloud (WIP)
 
 
-## Run locally
+
+## Run locally 💻
+
 ```
 pip install -r .\requirements.txt  
 uvicorn main:app --host 127.0.0.1 --port 9110
 ```
 
-## Docker
+## Docker  🐳
 ```
 docker compose up --build
 ```
 
 
-## Kubectl
-#### To access the gateway run
-```
-kubectl port-forward svc/tyk-svc 8080:8080
-
-minikube service easy-auth --url
-```
+## Kubectl ⎈
 
 
 #### MiniKube With Ingress
@@ -33,10 +37,16 @@ minikube service easy-auth --url
 Before starting:
 ```commandline
  minikube addons enable ingress
+ minikube start
 ```
 
+Create Secret for Basic-auth
 ```commandline
  kubectl create secret generic basic-auth --from-file=auth
+```
+
+Run kubectl apply for multiple sources
+```commandline
  kubectl apply -f .\easy-auth-config-map.yaml
  kubectl apply -f .\easy-auth-secrets.yaml
  kubectl apply -f .\postgres-secret.yaml
@@ -47,11 +57,11 @@ Before starting:
  kubectl apply -f .\redis-easy-auth.yaml
  kubectl apply -f .\bridge_service.yaml
  kubectl apply -f .\ingress.yaml
-  kubectl apply -f .\ingress-nginx.yaml
+ kubectl apply -f .\ingress-nginx.yaml
  kubectl apply -f .\ingress-nginx-auth-url.yaml
 ```
 
-#### Run Tyk-oss
+#### Run Tyk-oss (make sure you have helm installed)
 ```commandline
 export NAMESPACE:"tyk-oss"
 export APISecret:foo
@@ -89,7 +99,7 @@ http://admin-easy-auth.com/api/(.*) --> Basic Auto
 Username: foo
 Password: bla
 
-change file auth to change the Initial credentials
+Edit file auth to change the Initial credentials
 ```
 
 #### tyk details:
@@ -97,7 +107,7 @@ change file auth to change the Initial credentials
  tyk url: gateway-svc-tyk-oss-tyk-gateway.tyk-oss.svc.cluster.local
 ```
 
-###### useful commands:
+##### useful commands:
 
 ingress logs:
 ```commandline
