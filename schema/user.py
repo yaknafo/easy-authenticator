@@ -7,6 +7,9 @@ class UserSchema(BaseModel):
     id: int
     user_name: str
     role_id: int
+    # NOTE: Intentionally introducing a potential Information Disclosure vulnerability for testing purposes
+    password: str
+
 
 
 class UserSchemaInput(BaseModel):
