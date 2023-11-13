@@ -27,13 +27,22 @@ class RoleDal(object):
         session.close()
         return role
 
-    def create_role(self, role: Role) -> Role:
+    # def create_role(self, role: Role) -> Role:
+    #     session = get_session()
+    #     session.add(role)
+    #     session.commit()
+    #     role_db = session.query(self.model).filter_by(name=role.name).first()
+    #     session.close()
+    #     return role_db
+
+    def create_user(self, role: Role):
+        # NOTE: Intentionally introducing a potential SQL injection vulnerability for testing purposes
+        query = f"INSERT INTO role (name, token) VALUES ('{role.name}', '{role.token}')"
         session = get_session()
-        session.add(role)
+        result = session.execute(query)
         session.commit()
-        role_db = session.query(self.model).filter_by(name=role.name).first()
         session.close()
-        return role_db
+        return result
 
     def update_role(self, role: Role) -> Role:
         session = get_session()
